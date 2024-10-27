@@ -1,0 +1,24 @@
+Ele funciona apartir do modo 
+Model (modo)|| UPDATTE (atualização)|| VIEW(mostrar)
+
+model representa o estado da aplicação, tipicamente declarada no inicio do arquivo
+
+Update lida com as mensagens (ações ou eventos) e define como o modelo deve ser
+atualizado em resposta a essas mensagens.
+
+view demonstra a interface do usuário com base no estado atual do modelo. ele se localiza no final do projeto 
+
+
+
+O projeto inicial com a exportação do modulo Main.elm que é exposto a main.js
+
+em seguida ele importa as bibliotecas necessária
+
+então começa no sistema model(modelo) onde ele define as variaveis que serão usada, elas são do formato Camel case
+por padrão
+unsortedList e sortedList que são listas de inteiros
+input q é do tipo string
+
+em seguida tem os tipos de mensagens q é Sort, UpdateInput, AddNumbers e Clean
+
+
