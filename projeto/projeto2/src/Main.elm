@@ -1,3 +1,4 @@
+-- BubleSort brincando com os numeros, projeto finalizado
 module Main exposing (main)
 
 import Browser
@@ -19,7 +20,7 @@ type Msg
     | AddNumbers
     | Clean
 
--- inicializando o model
+-- Função inicial de modelo
 init : Model
 init =
     { unsortedList = []
@@ -27,7 +28,7 @@ init =
     , input = ""
     }
 
---  atualização do model
+-- Função de atualização
 update : Msg -> Model -> Model
 update msg model =
     case msg of
@@ -85,13 +86,15 @@ pass list =
 view : Model -> Html Msg
 view model =
     div []
-        [ input [ placeholder "Adicione os numeros", value model.input, onInput UpdateInput ] []
-        , button [ onClick AddNumbers ] [ text "Add Numeros" ]
-        , div [] [ text "Lista não organizada: ", text (String.join ", " (List.map String.fromInt model.unsortedList)) ]
-        , button [ onClick Sort ] [ text "organizador" ]
-        , div [] [ text "Lista organizada: ", text (String.join ", " (List.map String.fromInt model.sortedList)) ]
+        [ input [ placeholder "Enter numbers separated by commas", value model.input, onInput UpdateInput ] []
+        , button [ onClick AddNumbers ] [ text "Add Numbers" ]
+        , button [ onClick Clean ] [ text "Clean" ]
+        , div [] [ text "Unsorted List: ", text (String.join ", " (List.map String.fromInt model.unsortedList)) ]
+        , button [ onClick Sort ] [ text "Sort" ]
+        , div [] [ text "Sorted List: ", text (String.join ", " (List.map String.fromInt model.sortedList)) ]
         ]
 
 -- Programa principal
 main =
     Browser.sandbox { init = init, update = update, view = view }
+-- não esqueça que para ver na pagina utiliza no terminal o termo elm reactor
