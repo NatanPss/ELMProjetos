@@ -1,4 +1,3 @@
--- BubleSort brincando com os numeros, projeto finalizado
 module Main exposing (main)
 
 import Browser
@@ -97,4 +96,3 @@ view model =
 -- Programa principal
 main =
     Browser.sandbox { init = init, update = update, view = view }
--- não esqueça que para ver na pagina utiliza no terminal o termo elm reactor
