@@ -7,8 +7,8 @@ import Html.Events exposing (onClick, onInput)
 
 -- Modelo inicial com uma lista desordenada e o campo de entrada de texto
 type alias Model =
-    { unsortedList : List Int
-    , sortedList : List Int
+    { listaDesordenada : List Int
+    , listaOrdenada : List Int
     , input : String
     }
 
@@ -22,8 +22,8 @@ type Msg
 -- Função inicial de modelo
 init : Model
 init =
-    { unsortedList = []
-    , sortedList = []
+    { listaDesordenada = []
+    , listaOrdenada = []
     , input = ""
     }
 
@@ -32,7 +32,7 @@ update : Msg -> Model -> Model
 update msg model =
     case msg of
         Sort ->
-            { model | sortedList = bubbleSort model.unsortedList }
+            { model | listaOrdenada = bubbleSort model.listaDesordenada }
         UpdateInput newInput ->
             { model | input = newInput }
         AddNumbers ->
@@ -40,9 +40,9 @@ update msg model =
                 numbers = List.map String.toInt (String.split "," model.input)
                 validNumbers = List.filterMap identity numbers
             in
-            { model | unsortedList = validNumbers, input = "" }
+            { model | listaDesordenada = validNumbers, input = "" }
         Clean ->
-            { model | unsortedList = [], sortedList = [], input = "" }
+            { model | listaDesordenada = [], listaOrdenada = [], input = "" }
 
 -- Implementação do Bubble Sort
 bubbleSort : List Int -> List Int
@@ -88,9 +88,9 @@ view model =
         [ input [ placeholder "Enter numbers separated by commas", value model.input, onInput UpdateInput ] []
         , button [ onClick AddNumbers ] [ text "Add Numbers" ]
         , button [ onClick Clean ] [ text "Clean" ]
-        , div [] [ text "Unsorted List: ", text (String.join ", " (List.map String.fromInt model.unsortedList)) ]
+        , div [] [ text "Unsorted List: ", text (String.join ", " (List.map String.fromInt model.listaDesordenada)) ]
         , button [ onClick Sort ] [ text "Sort" ]
-        , div [] [ text "Sorted List: ", text (String.join ", " (List.map String.fromInt model.sortedList)) ]
+        , div [] [ text "Sorted List: ", text (String.join ", " (List.map String.fromInt model.listaOrdenada)) ]
         ]
 
 -- Programa principal
