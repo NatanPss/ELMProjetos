@@ -88,9 +88,9 @@ view model =
         [ input [ placeholder "Enter numbers separated by commas", value model.input, onInput UpdateInput ] []
         , button [ onClick AddNumbers ] [ text "Add Numbers" ]
         , button [ onClick Clean ] [ text "Clean" ]
-        , div [] [ text "Unsorted List: ", text (String.join ", " (List.map String.fromInt model.listaDesordenada)) ]
+        , div [] [ text "Lista desordenada: ", text (String.join ", " (List.map String.fromInt model.listaDesordenada)) ]
         , button [ onClick Sort ] [ text "Sort" ]
-        , div [] [ text "Sorted List: ", text (String.join ", " (List.map String.fromInt model.listaOrdenada)) ]
+        , div [] [ text "Lista ordenada: ", text (String.join ", " (List.map String.fromInt model.listaOrdenada)) ]
         ]
 
 -- Programa principal
